@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.AddReviewActivity"
+    android:orientation="vertical"
+    android:background="@color/greylight">
+
+    <androidx.appcompat.widget.Toolbar
+        android:foregroundTint="@color/white"
+        android:background="#FF6750A3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/toolbar"
+        app:title="Cinemago"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark">
+    </androidx.appcompat.widget.Toolbar>
+
+    <EditText
+        android:gravity="start"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@color/white"
+        android:layout_margin="20dp"
+        android:id="@+id/comment">
+    </EditText>
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:id="@+id/rating"
+        android:max="5"
+        android:progressTint="@color/yellow">
+    </RatingBar>
+
+    <TextView
+        android:layout_margin="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="By proceeding you also agree with the Terms of Service and Privacy Policy"
+        android:gravity="center"
+        android:textSize="16dp"
+        android:textColor="@color/grey"
+        android:layout_gravity="center_horizontal">
+    </TextView>
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Close"
+        android:id="@+id/submit">
+    </Button>
+
+</LinearLayout>
