@@ -49,7 +49,7 @@ public class AddMovieActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (day.getText().toString().equals("") || time.getText().toString().equals(""))
                 {
-                    Toast.makeText(AddMovieActivity.this, "Please enter day and time", Toast.LENGTH_SHORT).show();
+                    saveData();
                 }
                 else
                 {
