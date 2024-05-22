@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="100dp"
-    android:background="@color/cardview_dark_background"
+    android:background="#525E9F"
     android:padding="20dp"
     android:orientation="horizontal"
     android:gravity="center_vertical">
@@ -28,8 +28,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
-                android:textSize="18dp"
+                android:textSize="18sp"
                 android:textStyle="bold"
+                android:fontFamily="@font/jost"
                 android:text="Student"
                 android:id="@+id/name">
             </TextView>
@@ -37,7 +38,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
-                android:textSize="14dp"
+                android:textSize="14sp"
+                android:fontFamily="@font/jost"
                 android:text="email@gmail.com"
                 android:id="@+id/email">
             </TextView>

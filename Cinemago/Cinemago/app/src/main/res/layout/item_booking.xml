@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:elevation="10dp"
+    android:background="@color/white"
+    android:backgroundTint="@color/white"
+    android:layout_marginBottom="10dp"
+    app:cardCornerRadius="10dp"
     android:padding="5dp">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -20,6 +22,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
+                android:textColor="#525E9F"
+                android:fontFamily="@font/jost"
                 android:textStyle="bold"
                 android:text="1"/>
 
@@ -29,6 +33,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
+                android:textColor="#525E9F"
+                android:fontFamily="@font/jost"
                 android:text="Cinema 1"/>
 
             <TextView
@@ -37,6 +43,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
+                android:textColor="#525E9F"
+                android:fontFamily="@font/jost"
                 android:text="Address: Lahore 1"/>
 
             <TextView
@@ -45,11 +53,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
+                android:textColor="#525E9F"
+                android:fontFamily="@font/jost"
                 android:text="Star Light"/>
 
             <TextView
                 android:layout_marginTop="10dp"
                 android:id="@+id/seats"
+                android:textColor="#525E9F"
+                android:fontFamily="@font/jost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
@@ -59,22 +71,21 @@
                 android:id="@+id/total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
+                android:textSize="16sp"
+                android:textColor="#525E9F"
+                android:fontFamily="@font/jost"
                 android:text="1500"/>
             <TextView
-                android:text="Confirmed"
+                android:text="@string/confirmed"
                 android:id="@+id/status"
+                android:textColor="#525E9F"
+                android:fontFamily="@font/jost"
+                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp" />
+                android:textSize="20sp" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="10dp"
-                android:background="#C3C3C3"></View>
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
-</LinearLayout>

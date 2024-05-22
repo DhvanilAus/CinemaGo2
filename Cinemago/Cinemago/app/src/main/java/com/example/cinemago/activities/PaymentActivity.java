@@ -126,6 +126,7 @@ public class PaymentActivity extends AppCompatActivity {
                     if (task.isSuccessful())
                     {
                         startActivity(new Intent(PaymentActivity.this, BookingSuccessActivity.class));
+                        finish();
                     }
                 }
             });

@@ -31,7 +31,6 @@ public class SeatsActivity extends AppCompatActivity {
     ImageView seat31, seat32, seat33, seat34, seat35, seat36, seat37, seat38, seat39, seat40;
     ImageView seat41, seat42, seat43, seat44, seat45, seat46, seat47, seat48, seat49, seat50;
     ImageView seat51, seat52;
-//    List<Integer> seatModels = Arrays.asList(1, 3, 5);
     List<Integer> myselectedseats = new ArrayList<>();
 
 
@@ -107,10 +106,11 @@ public class SeatsActivity extends AppCompatActivity {
                             .putExtra("total_price", total)
                             .putExtra("seats", (Serializable) myselectedseats)
                             .putExtra("movieid", movie.getId()));
+                    finish();
                 }
                 else
                 {
-                    Toast.makeText(SeatsActivity.this, "Pleaes select a seat first!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SeatsActivity.this, "Please select a seat first!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -118,7 +118,7 @@ public class SeatsActivity extends AppCompatActivity {
         findViewById(R.id.cancel).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SeatsActivity.this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                finish();
             }
         });
 

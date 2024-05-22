@@ -7,7 +7,6 @@ public class Cinema implements Serializable {
     private String id;
     private String name;
     private String description;
-    private String image;
     private String contact;
     private String address;
     private String lat;
@@ -15,8 +14,8 @@ public class Cinema implements Serializable {
     private double distance;
     private boolean featured;
     // Consider creating a separate model for movies if needed
-     private List<Movie> movies;
-     private List<Review> reviews;
+    private List<Movie> movies;
+    private List<Review> reviews;
 
     public Cinema() {
         // Default constructor required for Firebase
@@ -26,24 +25,36 @@ public class Cinema implements Serializable {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.image = image;
         this.address = address;
         this.lat = lat;
         this.lng = lng;
     }
 
     // Getters and setters
-    public String getId() { return id; }
-    public void setId(String id) { this.id = id; }
+    public String getId() {
+        return id;
+    }
 
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
+    public void setId(String id) {
+        this.id = id;
+    }
 
-    public String getDescription() { return description; }
-    public void setDescription(String description) { this.description = description; }
+    public String getName() {
+        return name;
+    }
 
-    public String getImage() { return image; }
-    public void setImage(String image) { this.image = image; }
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
 
     public String getContact() {
         return contact;
@@ -53,20 +64,45 @@ public class Cinema implements Serializable {
         this.contact = contact;
     }
 
-    public String getAddress() { return address; }
-    public void setAddress(String address) { this.address = address; }
+    public String getAddress() {
+        return address;
+    }
 
-    public String getLat() { return lat; }
-    public void setLat(String lat) { this.lat = lat; }
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-    public String getLng() { return lng; }
-    public void setLng(String lng) { this.lng = lng; }
+    public String getLat() {
+        return lat;
+    }
 
-    public double getDistance() { return distance; }
-    public void setDistance(double distance) { this.distance = distance; }
+    public void setLat(String lat) {
+        this.lat = lat;
+    }
 
-    public boolean isFeatured() { return featured; }
-    public void setFeatured(boolean featured) { this.featured = featured; }
+    public String getLng() {
+        return lng;
+    }
+
+    public void setLng(String lng) {
+        this.lng = lng;
+    }
+
+    public double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
+    }
+
+    public boolean isFeatured() {
+        return featured;
+    }
+
+    public void setFeatured(boolean featured) {
+        this.featured = featured;
+    }
 
     public List<Movie> getMovies() {
         return movies;

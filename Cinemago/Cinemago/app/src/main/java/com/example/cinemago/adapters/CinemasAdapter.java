@@ -2,6 +2,7 @@ package com.example.cinemago.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,8 +51,7 @@ public class CinemasAdapter extends RecyclerView.Adapter<CinemasAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Cinema data = dataList.get(position);
         holder.tvtitle.setText(data.getName());
-//        holder.tvdesription.setText(data.getDescription());
-        Picasso.get().load(data.getImage()).into(holder.imageView);
+        holder.tvdesription.setText(data.getAddress());
         fetchReviewsAndCalculateAverage(data.getId(), holder.ratingBar, holder.ratingtext);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

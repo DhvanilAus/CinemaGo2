@@ -1,11 +1,14 @@
 package com.example.cinemago.adapters;
 
+import static com.example.cinemago.Constants.POSITION;
+
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cinemago.BookNowInterface;
 import com.example.cinemago.R;
 import com.example.cinemago.activities.MovieDetailsActivity;
 import com.example.cinemago.models.Movie;
@@ -34,14 +38,17 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
     Context context;
     private List<Movie> dataList;
     private LayoutInflater inflater;
+
+    private BookNowInterface bookNowInterface;
     String cinemaid;
 
     // Constructor
-    public MoviesAdapter(Context context, List<Movie> dataList, String cinemaid) {
+    public MoviesAdapter(Context context, List<Movie> dataList, String cinemaid,BookNowInterface bookNowInterface) {
         this.inflater = LayoutInflater.from(context);
         this.dataList = dataList;
         this.context = context;
         this.cinemaid = cinemaid;
+        this.bookNowInterface = bookNowInterface;
     }
 
     @NonNull
@@ -57,15 +64,14 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
         holder.tvtitle.setText(data.getName());
 //        holder.tvdesription.setText(data.getDescription());
      //   Picasso.get().load(data.getImage()).into(holder.imageView);
-        Log.d("jskkjkfjkf", "onBindViewHolder: "+cinemaid);
 
         holder.bookbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                POSITION = holder.getAdapterPosition();
+                bookNowInterface.bookNow(cinemaid);
 
-                context.startActivity(new Intent(context, MovieDetailsActivity.class)
-                        .putExtra("data", (Serializable) data)
-                        .putExtra("cinemaid", cinemaid));
+
             }
         });
         fetchData(holder.recyclerView, position);
@@ -112,7 +118,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
         TextView tvdesription;
         ImageView imageView;
         RecyclerView recyclerView;
-        MaterialButton bookbutton;
+        Button bookbutton;
 
         ViewHolder(View itemView) {
             super(itemView);

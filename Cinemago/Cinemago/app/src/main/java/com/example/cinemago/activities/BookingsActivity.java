@@ -1,5 +1,7 @@
 package com.example.cinemago.activities;
 
+import static com.example.cinemago.SharedPreference.userData;
+
 import android.os.Bundle;
 import android.widget.ImageView;
 
@@ -12,7 +14,9 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cinemago.BookNowInterface;
 import com.example.cinemago.R;
+import com.example.cinemago.SharedPreference;
 import com.example.cinemago.adapters.BookingAdapter;
 import com.example.cinemago.adapters.CinemasAdapter;
 import com.example.cinemago.adapters.MoviesAdapter;
@@ -33,6 +37,7 @@ public class BookingsActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private List<Booking> dataList = new ArrayList<>();
     private BookingAdapter adapter;
+    private SharedPreference sharedPreference;
     private DatabaseReference databaseReference;
 
 
@@ -40,6 +45,8 @@ public class BookingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bookings);
+        sharedPreference = new SharedPreference(this);
+        sharedPreference.loadUserData();
 
         databaseReference = FirebaseDatabase.getInstance().getReference("bookings");
 
@@ -59,7 +66,7 @@ public class BookingsActivity extends AppCompatActivity {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
 
                     Booking booking = snapshot.getValue(Booking.class);
-                    if (booking != null && booking.getUserId().equals(SingletonClass.getInstance().getUser().uid)) {
+                    if (booking != null && booking.getUserId().equals(userData.uid)) {
                         dataList.add(booking);
                     }
                 }

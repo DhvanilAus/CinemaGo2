@@ -25,7 +25,7 @@ import java.util.List;
 
 public class AddMovieActivity extends AppCompatActivity {
 
-    EditText name, description, image, duration, language, ticketprice, day, time;
+    EditText name, description, duration, language, ticketprice, day, time;
     List<Showtime> showtimes = new ArrayList<>();
     String daytime = "";
     TextView daytimetextview;
@@ -36,7 +36,6 @@ public class AddMovieActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_movie);
         name = findViewById(R.id.name);
         description = findViewById(R.id.description);
-        image = findViewById(R.id.image);
         duration = findViewById(R.id.duration);
         language = findViewById(R.id.language);
         ticketprice = findViewById(R.id.ticketprice);
@@ -65,15 +64,14 @@ public class AddMovieActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (name.getText().toString().equals("")
                         || description.getText().toString().equals("")
-                        || image.getText().toString().equals("")
                         || duration.getText().toString().equals("")
                         || language.getText().toString().equals("")
                         || ticketprice.getText().toString().equals("")
                 )
                 {
-                    Toast.makeText(AddMovieActivity.this, "Please enter day and time", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddMovieActivity.this, "Please fill all the Details", Toast.LENGTH_SHORT).show();
                 }
-                else if (showtimes.size() == 0)
+                else if (showtimes.isEmpty())
                 {
                     Toast.makeText(AddMovieActivity.this, "Please enter day and time", Toast.LENGTH_SHORT).show();
                 }
@@ -98,7 +96,6 @@ public class AddMovieActivity extends AppCompatActivity {
         movie.setDuration(duration.getText().toString());
         movie.setLanguage(language.getText().toString());
         movie.setTicketprice(Integer.parseInt(ticketprice.getText().toString()));
-        movie.setImage(image.getText().toString());
         movie.setShowtimes(showtimes);
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("cinemas").child(getIntent().getStringExtra("cinemaid")).child("movies");

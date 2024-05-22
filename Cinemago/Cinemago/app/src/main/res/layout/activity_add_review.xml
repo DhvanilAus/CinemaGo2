@@ -8,27 +8,32 @@
     android:layout_height="match_parent"
     tools:context=".activities.AddReviewActivity"
     android:orientation="vertical"
-    android:background="@color/greylight">
+    android:background="#A7A8AA">
 
     <androidx.appcompat.widget.Toolbar
         android:foregroundTint="@color/white"
-        android:background="#FF6750A3"
+        android:background="#525E9F"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/toolbar"
         app:title="Cinemago"
+        app:subtitleTextColor="@color/white"
+        app:titleTextColor="@color/white"
         app:theme="@style/ThemeOverlay.AppCompat.Dark">
     </androidx.appcompat.widget.Toolbar>
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:gravity="start"
         android:padding="10dp"
+        android:textSize="15sp"
+        android:fontFamily="@font/jost"
+        android:textColor="@color/black"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:background="@color/white"
         android:layout_margin="20dp"
         android:id="@+id/comment">
-    </EditText>
+    </com.google.android.material.textfield.TextInputEditText>
 
     <RatingBar
         android:layout_width="wrap_content"
@@ -36,6 +41,8 @@
         android:layout_gravity="center"
         android:id="@+id/rating"
         android:max="5"
+        android:backgroundTint="@color/white"
+        android:background="@color/white"
         android:progressTint="@color/yellow">
     </RatingBar>
 
@@ -45,17 +52,20 @@
         android:layout_height="wrap_content"
         android:text="By proceeding you also agree with the Terms of Service and Privacy Policy"
         android:gravity="center"
-        android:textSize="16dp"
-        android:textColor="@color/grey"
+        android:textSize="16sp"
+        android:textColor="@color/black"
         android:layout_gravity="center_horizontal">
     </TextView>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Close"
+        android:backgroundTint="#525E9F"
+        android:textColor="@color/white"
+        android:background="@drawable/button_color"
         android:id="@+id/submit">
-    </Button>
+    </androidx.appcompat.widget.AppCompatButton>
 
 </LinearLayout>

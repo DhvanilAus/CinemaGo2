@@ -1,5 +1,7 @@
 package com.example.cinemago.activities;
 
+import static com.example.cinemago.SharedPreference.userData;
+
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.View;
@@ -55,7 +57,7 @@ public class AddReviewActivity extends AppCompatActivity {
         Review review = new Review();
         review.setRating((int) ratingBar.getRating());
         review.setComment(editText.getText().toString());
-        review.setUserId(SingletonClass.getInstance().getUser().getUid());
+        review.setUserId(userData.uid);
 
         ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Saving Review...");

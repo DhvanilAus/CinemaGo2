@@ -9,7 +9,6 @@ public class Movie implements Serializable {
     private String description;
     private String duration;
     private String language;
-    private String image;
     private String poster;
     private String time;
     private double ticketprice;
@@ -30,8 +29,6 @@ public class Movie implements Serializable {
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
 
-    public String getImage() { return image; }
-    public void setImage(String image) { this.image = image; }
 
     public String getPoster() { return poster; }
     public void setPoster(String poster) { this.poster = poster; }

@@ -1,16 +1,21 @@
 package com.example.cinemago.activities;
 
+import static com.example.cinemago.SharedPreference.userData;
+
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.splashscreen.SplashScreen;
 
 import com.example.cinemago.R;
+import com.example.cinemago.SharedPreference;
 import com.example.cinemago.models.User;
 import com.example.cinemago.utils.SingletonClass;
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,13 +32,27 @@ public class LoginActivity extends AppCompatActivity {
     private Button buttonLogin;
     private TextView textViewRegister;
     private FirebaseAuth mAuth;
+    SplashScreen splashScreen;
+    private SharedPreference sharedPreference;
+
 
     ProgressDialog progressDialog;
-//
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        splashScreen = SplashScreen.installSplashScreen(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        sharedPreference = new SharedPreference(this);
+
+
+
+        if (sharedPreference.getToken()!=null)
+        {
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class).putExtra("type", "login");
+            startActivity(intent);
+            finish();
+        }
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -47,11 +66,13 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         textViewRegister.setOnClickListener(v -> {
-            if(SingletonClass.getInstance().getUser() != null) {
+            if (SingletonClass.getInstance().getUser() != null) {
                 SingletonClass.getInstance().setUser(null);
             }
             Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
             startActivity(intent);
+            finish();
+
         });
     }
 
@@ -93,6 +114,9 @@ public class LoginActivity extends AppCompatActivity {
                 User user = dataSnapshot.getValue(User.class);
                 if (user != null) {
                     SingletonClass.getInstance().setUser(user);
+                    userData = user;
+                    sharedPreference.saveUserData(userData);
+                    sharedPreference.saveToken("LoggedIn");
                     Toast.makeText(LoginActivity.this, "Welcome " + user.name, Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class).putExtra("type", "login");
                     startActivity(intent);
@@ -105,12 +129,10 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError error) {
-                // Failed to read value
                 Toast.makeText(LoginActivity.this, "Failed to read user data.", Toast.LENGTH_SHORT).show();
             }
         });
     }
-
 
 
 }

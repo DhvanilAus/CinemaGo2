@@ -45,8 +45,7 @@ public class RegisterActivity extends AppCompatActivity {
         title = findViewById(R.id.title);
 
         try {
-            if (SingletonClass.getInstance().getUser() != null)
-            {
+            if (SingletonClass.getInstance().getUser() != null) {
                 editTextName.setText(SingletonClass.getInstance().getUser().getName());
                 editTextAddress.setText(SingletonClass.getInstance().getUser().getAddress());
                 editTextEmail.setText(SingletonClass.getInstance().getUser().getEmail());
@@ -58,15 +57,13 @@ public class RegisterActivity extends AppCompatActivity {
                 editTextPassword.setVisibility(View.GONE);
                 textViewLogin.setVisibility(View.GONE);
             }
+        } catch (Exception e) {
         }
-        catch (Exception e){}
 
         buttonRegister.setOnClickListener(v -> {
-            if(SingletonClass.getInstance().getUser() == null) {
+            if (SingletonClass.getInstance().getUser() == null) {
                 registerUser();
-            }
-            else
-            {
+            } else {
                 saveUserData();
             }
         });
@@ -75,7 +72,6 @@ public class RegisterActivity extends AppCompatActivity {
             finish();
         });
     }
-
 
 
     private void registerUser() {
@@ -105,6 +101,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
     }
+
     private void saveUserData() {
         String name = editTextName.getText().toString().trim();
         String address = editTextAddress.getText().toString().trim();

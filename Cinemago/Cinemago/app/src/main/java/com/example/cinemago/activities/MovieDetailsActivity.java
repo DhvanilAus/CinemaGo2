@@ -1,9 +1,13 @@
 package com.example.cinemago.activities;
 
+import static com.example.cinemago.Constants.DATALIST;
+import static com.example.cinemago.Constants.POSITION;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,7 +33,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
     TextView tvdesription;
     ImageView imageView;
     RecyclerView recyclerView;
-    MaterialButton selectseatbutton;
+    Button selectseatbutton;
     String cinemaid = "";
     Movie movie;
 
@@ -40,22 +44,23 @@ public class MovieDetailsActivity extends AppCompatActivity {
 
         tvtitle = findViewById(R.id.tvtitle);
         tvdesription = findViewById(R.id.description);
-        imageView = findViewById(R.id.image);
+       // imageView = findViewById(R.id.image);
         selectseatbutton = findViewById(R.id.selectseat);
         recyclerView = findViewById(R.id.recyclerView);
 
-        movie = (Movie) getIntent().getSerializableExtra("data");
-        cinemaid =  getIntent().getStringExtra("cinemaid");
+        movie = DATALIST.get(POSITION);
+       cinemaid =  getIntent().getStringExtra("cinemaId");
+        Log.d("kjskdjksdkj", "onCreate: "+movie);
 
         tvtitle.setText(movie.getName());
         tvdesription.setText(movie.getDescription());
-        Picasso.get().load(movie.getImage()).into(imageView);
+      //  Picasso.get().load(movie.getImage()).into(imageView);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new TimesVerticalAdapter(this, movie.getShowtimes(), movie));
 
-        Log.e("MovieData", movie.getName());
-        Log.e("MovieData", String.valueOf(movie.getShowtimes().size()));
+//        Log.e("MovieData", movie.getName());
+//        Log.e("MovieData", String.valueOf(movie.getShowtimes().size()));
 
         findViewById(R.id.selectseat).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +70,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
                         .putExtra("ticketprice", movie.getTicketprice())
                         .putExtra("data", (Serializable) movie)
                         .putExtra("cinemaid", cinemaid));
+                finish();
             }
         });
 

@@ -15,7 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class AddCenimaActivity extends AppCompatActivity {
 
-    EditText name, description, address, lat, lng, contact, url;
+    EditText name, description, address, lat, lng, contact;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +27,6 @@ public class AddCenimaActivity extends AppCompatActivity {
         lat = findViewById(R.id.lat);
         lng = findViewById(R.id.lng);
         contact = findViewById(R.id.contact);
-        url = findViewById(R.id.image);
 
         findViewById(R.id.addbutton).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,8 +37,7 @@ public class AddCenimaActivity extends AppCompatActivity {
                         address.getText().toString().equals("") ||
                         lat.getText().toString().equals("") ||
                         lng.getText().toString().equals("") ||
-                        contact.getText().toString().equals("") ||
-                        url.getText().toString().equals("")
+                        contact.getText().toString().equals("")
                 )
                 {
                     Toast.makeText(AddCenimaActivity.this, "Please enter all fields", Toast.LENGTH_SHORT).show();
@@ -66,7 +64,6 @@ public class AddCenimaActivity extends AppCompatActivity {
         cinema.setLat(lat.getText().toString());
         cinema.setLng(lng.getText().toString());
         cinema.setContact(contact.getText().toString());
-        cinema.setImage(url.getText().toString());
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("cinemas");
         String id = reference.push().getKey();

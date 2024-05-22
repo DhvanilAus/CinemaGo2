@@ -5,6 +5,7 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="#525E9F"
     tools:context=".activities.MainActivity">
 
     <RelativeLayout
@@ -17,12 +18,21 @@
             android:orientation="vertical">
             <androidx.appcompat.widget.Toolbar
                 android:foregroundTint="@color/white"
-                android:background="#FF6750A3"
+                android:background="#878FBC"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/toolbar"
-                app:title="Cinemago"
                 app:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+
+                <SearchView
+                    android:id="@+id/searchView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:iconifiedByDefault="false"
+                    android:queryHint="Search"
+                    android:layout_centerHorizontal="true" />
+
             </androidx.appcompat.widget.Toolbar>
             <View
                 android:layout_width="match_parent"
@@ -37,20 +47,22 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Welcome back,"
-                android:textColor="@color/black"
+                android:textColor="#525E9F"
                 android:textSize="18dp"
+                android:fontFamily="@font/jost"
                 android:id="@+id/welcome">
             </TextView>
             <TextView
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="10dp"
+                android:textColor="#525E9F"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textColor="@color/black"
                 android:textSize="30dp"
                 android:textStyle="bold"
+                android:fontFamily="@font/jost"
                 android:text="Dhvani Patel!"
                 android:id="@+id/username">
             </TextView>
@@ -61,13 +73,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:fontFamily="@font/jost"
                 android:textColor="@color/black"
-                android:textSize="18dp"
+                android:textSize="25sp"
                 android:textStyle="bold"
+                android:visibility="gone"
                 android:text="Nearby Cinemas">
             </TextView>
 
             <RelativeLayout
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
@@ -92,8 +107,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textColor="@color/black"
-                android:textSize="18dp"
+                android:textSize="25dp"
+                android:textColor="#525E9F"
+                android:fontFamily="@font/jost"
                 android:textStyle="bold"
                 android:text="All Cinemas">
             </TextView>
@@ -114,7 +130,9 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_margin="10dp"
-            android:visibility="visible"
+            android:background="#525E9F"
+            android:backgroundTint="#525E9F"
+            android:visibility="gone"
             android:id="@+id/add">
         </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
@@ -125,6 +143,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/drawer_view" />
 

@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:background="@color/white"
     android:padding="5dp">
 
     <TextView
@@ -10,8 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:textSize="14dp"
-        android:text="asdfasdf"
-        android:background="@color/grey"
+        android:text="Monday 24 May 2024"
+        android:background="#525E9F"
         android:gravity="center_vertical"
         android:paddingHorizontal="10dp"
         android:textColor="@color/white"/>
@@ -26,7 +27,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
-            android:text="asdfsafd"/>
+            android:textColor="@color/black"
+            android:fontFamily="@font/jost"
+            android:text="4 AM "/>
 
 
         <LinearLayout
@@ -38,22 +41,27 @@
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:id="@+id/name"
+                android:fontFamily="@font/jost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-                android:text="asdfsafd"/>
+                android:text="Name of Movie"/>
             <TextView
                 android:id="@+id/language"
+                android:textColor="@color/black"
+                android:fontFamily="@font/jost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-                android:text="asdfsafd"/>
+                android:text="Language"/>
             <TextView
                 android:id="@+id/duration"
+                android:textColor="@color/black"
+                android:fontFamily="@font/jost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-                android:text="asdfsafd"/>
+                android:text="Duration"/>
         </LinearLayout>
     </LinearLayout>
 

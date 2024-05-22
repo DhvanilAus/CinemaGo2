@@ -447,27 +447,34 @@
 
     </LinearLayout>
 
-    <com.google.android.material.button.MaterialButton
+    <androidx.appcompat.widget.AppCompatButton
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:textSize="18dp"
-        android:text="Checkout"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/button_color"
+        android:backgroundTint="#525E9F"
+        android:fontFamily="@font/jost"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/checkout"
         android:layout_gravity="center"
         android:layout_marginTop="100dp"
-        android:id="@+id/checkout">
-    </com.google.android.material.button.MaterialButton>
+        android:textColor="@color/white"
+        android:text="Checkout"/>
 
-    <com.google.android.material.button.MaterialButton
+    <androidx.appcompat.widget.AppCompatButton
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:textSize="18dp"
-        android:text="Cancel"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/button_color"
+        android:backgroundTint="#525E9F"
+        android:fontFamily="@font/jost"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/cancel"
         android:layout_gravity="center"
-        android:id="@+id/cancel">
-    </com.google.android.material.button.MaterialButton>
+        android:textColor="@color/white"
+        android:text="@string/cancel"/>
+
 
 </LinearLayout>

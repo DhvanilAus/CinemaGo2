@@ -48,7 +48,7 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Booking data = dataList.get(position);
-        holder.ticket.setText("Ticket # "+String.valueOf(position));
+        holder.ticket.setText("Ticket # "+String.valueOf(position+1));
         holder.status.setText("Status: "+data.getStatus());
         holder.total.setText("Total: $"+String.valueOf(data.getTotalPrice()));
         String seats = "";

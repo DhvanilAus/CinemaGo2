@@ -21,7 +21,8 @@ public class BookingSuccessActivity extends AppCompatActivity {
         findViewById(R.id.close).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(BookingSuccessActivity.this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                startActivity(new Intent(BookingSuccessActivity.this, BookingsActivity.class));
+                finish();
             }
         });
     }

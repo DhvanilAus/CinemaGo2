@@ -1,5 +1,9 @@
 package com.example.cinemago.activities;
 
+import static com.example.cinemago.Constants.EMAIL;
+import static com.example.cinemago.Constants.USERDATA;
+import static com.example.cinemago.SharedPreference.userData;
+
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
@@ -27,6 +31,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cinemago.R;
+import com.example.cinemago.SharedPreference;
 import com.example.cinemago.adapters.CinemasAdapter;
 import com.example.cinemago.adapters.NearbyCinemasAdapter;
 import com.example.cinemago.models.Booking;
@@ -46,6 +51,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -57,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
     private List<Cinema> nearbydataList = new ArrayList<>();
     private CinemasAdapter adapter;
     NearbyCinemasAdapter adapternearby;
+    SharedPreference sharedPreference;
     private DatabaseReference databaseReference;
 
     TextView welcomme, name;
@@ -71,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        sharedPreference = new SharedPreference(this);
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         welcomme = findViewById(R.id.welcome);
@@ -81,16 +88,22 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+           sharedPreference.loadUserData();
 
-        if (SingletonClass.getInstance().getUser().email.equals("admin@cinemago.com")) {
-            findViewById(R.id.add).setVisibility(View.VISIBLE);
+           if (Objects.equals(userData.email, "teamdatainnovators@cinemago.com"))
+           {
+               findViewById(R.id.add).setVisibility(View.VISIBLE);
             findViewById(R.id.add).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     startActivity(new Intent(MainActivity.this, AddCenimaActivity.class));
+
                 }
             });
-        }
+
+           }
+
+
 
         if (getIntent().getStringExtra("type").equals("login")) {
             welcomme.setText("Welcome back,");
@@ -107,18 +120,16 @@ public class MainActivity extends AppCompatActivity {
         TextView navUsername = (TextView) headerView.findViewById(R.id.name);
         LinearLayout profile_header = (LinearLayout) headerView.findViewById(R.id.profile_header);
 
-        if (!SingletonClass.getInstance().getUser().getEmail().equals(null)) {
-            navUseremail.setText(SingletonClass.getInstance().getUser().getEmail());
+        if (userData.email != null) {
+            navUseremail.setText(userData.email);
         }
 
-        if (!SingletonClass.getInstance().getUser().getName().equals(null)) {
-            navUsername.setText(SingletonClass.getInstance().getUser().getName());
-            name.setText(SingletonClass.getInstance().getUser().getName() + "!");
+        if (userData.email != null) {
+            navUsername.setText(userData.name);
+            name.setText(userData.name+"!");
         }
 
-        profile_header.setOnClickListener(v -> {
-            startActivity(new Intent(MainActivity.this, RegisterActivity.class));
-        });
+
 
         setupDrawerContent(navigationView);
 
@@ -233,20 +244,12 @@ public class MainActivity extends AppCompatActivity {
         if (menuItem.getItemId() == R.id.bookings) {
             startActivity(new Intent(MainActivity.this, BookingsActivity.class));
         } else if (menuItem.getItemId() == R.id.logout) {
-            SingletonClass.getInstance().setUser(null);
+            sharedPreference.clearToken();
             FirebaseAuth.getInstance().signOut();
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
             finish();
         }
-//        else if (menuItem.getItemId() == R.id.information) {
-//            startActivity(new Intent(MainActivity.this, InformationActivity.class));
-//        } else if (menuItem.getItemId() == R.id.profile) {
-//            startActivity(new Intent(MainActivity.this, RegisterActivity.class));
-//        } else if (menuItem.getItemId() == R.id.trackzakat) {
-//            startActivity(new Intent(MainActivity.this, TrackZakatActivity.class));
-//        } else if (menuItem.getItemId() == R.id.notifications) {
-//            startActivity(new Intent(MainActivity.this, NotificationsActivity.class));
-//        }
+
 
         menuItem.setChecked(true);
         setTitle(menuItem.getTitle());
