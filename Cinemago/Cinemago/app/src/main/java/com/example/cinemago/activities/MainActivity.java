@@ -53,6 +53,10 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Now multiple comments will be written
+ *
+ */
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
