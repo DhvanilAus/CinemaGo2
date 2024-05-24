@@ -32,10 +32,14 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This is the booking activity and here we are showing all the movies booking done by the user
+ */
+
 public class BookingsActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
-    private List<Booking> dataList = new ArrayList<>();
+    private RecyclerView recyclerView;   // intialized recyclerview
+    private List<Booking> dataList = new ArrayList<>();  //Array list of booking type
     private BookingAdapter adapter;
     private SharedPreference sharedPreference;
     private DatabaseReference databaseReference;
@@ -48,13 +52,18 @@ public class BookingsActivity extends AppCompatActivity {
         sharedPreference = new SharedPreference(this);
         sharedPreference.loadUserData();
 
+
+        /**
+         * took a instance from firebase of booking table in which booking is saved
+         */
+
         databaseReference = FirebaseDatabase.getInstance().getReference("bookings");
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new BookingAdapter(this, dataList);
         recyclerView.setAdapter(adapter);
-        fetchBookings();
+        fetchBookings(); //booking fetched from booking table and saved it in a dataList and later on passed to adapter to set in recyclerview
 
     }
 

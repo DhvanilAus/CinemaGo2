@@ -33,6 +33,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+/**
+ * Payment activity to get payment from user
+ * we are showing total amount here we has been passed through intent
+ * and seats saved in booking table passed through intent
+ */
 public class PaymentActivity extends AppCompatActivity {
 
     private TextView tvPaymentMessage;

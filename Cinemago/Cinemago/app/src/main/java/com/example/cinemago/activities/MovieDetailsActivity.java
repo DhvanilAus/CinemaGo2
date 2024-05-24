@@ -27,6 +27,10 @@ import com.squareup.picasso.Picasso;
 
 import java.io.Serializable;
 
+/**
+ * Activity to show movie details like movie name show times it is fetched from movie table
+ */
+
 public class MovieDetailsActivity extends AppCompatActivity {
 
     TextView tvtitle;
@@ -49,8 +53,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
 
         movie = DATALIST.get(POSITION);
-       cinemaid =  getIntent().getStringExtra("cinemaId");
-        Log.d("kjskdjksdkj", "onCreate: "+movie);
+        cinemaid =  getIntent().getStringExtra("cinemaId");
 
         tvtitle.setText(movie.getName());
         tvdesription.setText(movie.getDescription());
@@ -59,9 +62,10 @@ public class MovieDetailsActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new TimesVerticalAdapter(this, movie.getShowtimes(), movie));
 
-//        Log.e("MovieData", movie.getName());
-//        Log.e("MovieData", String.valueOf(movie.getShowtimes().size()));
-
+        /**
+         * On click of select seat going from movie detailactivity to Seat activity and passing data
+         * movie id price through intent
+         */
         findViewById(R.id.selectseat).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

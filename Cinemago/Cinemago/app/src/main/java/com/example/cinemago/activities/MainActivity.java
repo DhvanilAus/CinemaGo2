@@ -54,7 +54,11 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Now multiple comments will be written
+ * This is the main activity where all cinemas has been fetched from the cinema table
+ * And shown in recyclerview
+ * Also we are checking if user is a admin then Add button is visible
+ * He can add cinema
+ * Other users can only click on cinema and do bookings
  *
  */
 public class MainActivity extends AppCompatActivity {
@@ -94,7 +98,10 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
            sharedPreference.loadUserData();
 
-           if (Objects.equals(userData.email, "teamdatainnovators@cinemago.com"))
+        /**
+         * Checking if user is admin
+         */
+        if (Objects.equals(userData.email, "teamdatainnovators@cinemago.com"))
            {
                findViewById(R.id.add).setVisibility(View.VISIBLE);
             findViewById(R.id.add).setOnClickListener(new View.OnClickListener() {
@@ -124,6 +131,9 @@ public class MainActivity extends AppCompatActivity {
         TextView navUsername = (TextView) headerView.findViewById(R.id.name);
         LinearLayout profile_header = (LinearLayout) headerView.findViewById(R.id.profile_header);
 
+        /**
+         * setting email as an logged in user email
+         */
         if (userData.email != null) {
             navUseremail.setText(userData.email);
         }
@@ -140,6 +150,9 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewnearby = findViewById(R.id.recyclerViewnearby);
         recyclerView = findViewById(R.id.recyclerView);
 
+        /**
+         * List passed to recyclerview adapter of cinemas
+         */
         recyclerViewnearby.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         adapternearby = new NearbyCinemasAdapter(this, nearbydataList);
         recyclerViewnearby.setAdapter(adapternearby);
@@ -169,25 +182,10 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 }
-//                for (Cinema cinema : dataList) {
-//
-////                    Log.e("Distances", String.valueOf(cinema.getLat()));
-////                    Log.e("Distances", String.valueOf(cinema.getLng()));
-//                    Log.e("Distances", String.valueOf(cinema.getLat()));
-//                }
-//                Log.e("Distances", String.valueOf(dataList.size()));
 
-
-//                Collections.sort(dataList, new Comparator<Cinema>() {
-//                    @Override
-//                    public int compare(Cinema o1, Cinema o2) {
-//                        return Double.compare(o1.getDistance(), o2.getDistance());
-//                    }
-//                });
 
                 adapternearby.notifyDataSetChanged();
 
-//                Log.e("LocationGPS", String.valueOf(calculateDistance(latitude, longitude, targetLat, targetLng)));
             }
 
             @Override
@@ -209,6 +207,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Fetching cinemas table details from firebase and saving in a list
+     */
     private void fetchData() {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -267,6 +268,10 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 });
     }
+
+    /**
+     * Permission checked for location and declared in manifest file
+     */
 
     private void checkPermissionsAndStartLocationUpdates() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {

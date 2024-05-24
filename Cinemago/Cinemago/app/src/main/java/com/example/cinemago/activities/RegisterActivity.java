@@ -17,6 +17,10 @@ import com.example.cinemago.utils.SingletonClass;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
+/**
+ * This is the registeration activity to register user to firebase in users table
+ */
+
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText editTextName;
@@ -101,6 +105,8 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
     }
+
+    // Function to save User data in table
 
     private void saveUserData() {
         String name = editTextName.getText().toString().trim();

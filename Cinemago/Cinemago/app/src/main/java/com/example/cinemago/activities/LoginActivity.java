@@ -25,6 +25,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+/**
+ * This is the login activity the launcher activity
+ * Here we are checking email and password from user table which is created in register activity
+ * if getting matched we are logged in
+ *
+ */
 public class LoginActivity extends AppCompatActivity {
 
     private EditText editTextEmail;
@@ -33,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView textViewRegister;
     private FirebaseAuth mAuth;
     SplashScreen splashScreen;
-    private SharedPreference sharedPreference;
+    private SharedPreference sharedPreference;  // Created object of shared preference class
 
 
     ProgressDialog progressDialog;
@@ -43,9 +49,14 @@ public class LoginActivity extends AppCompatActivity {
         splashScreen = SplashScreen.installSplashScreen(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        sharedPreference = new SharedPreference(this);
+        sharedPreference = new SharedPreference(this);  //intialized shared preference
 
 
+        /**
+         * Saving string type token in shared preference on click of login button
+         * if it exists then we are directly opening main activity
+         * else opening login activity
+         */
 
         if (sharedPreference.getToken()!=null)
         {
@@ -54,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
             finish();
         }
 
-        mAuth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();  // created instance of firebase
 
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
@@ -62,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
         textViewRegister = findViewById(R.id.textViewRegister);
 
         buttonLogin.setOnClickListener(v -> {
-            loginUser();
+            loginUser(); //login user
         });
 
         textViewRegister.setOnClickListener(v -> {
@@ -76,6 +87,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+
     private void loginUser() {
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
@@ -88,6 +100,10 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Sign in...");
         progressDialog.show();
+        /**
+         * passed email password in firebase auth
+         * if success the fetchUserData
+         */
 
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
@@ -102,6 +118,10 @@ public class LoginActivity extends AppCompatActivity {
                 });
     }
 
+    /**
+     * Fetching user Data from users table from firebase and logged in
+     * then going to main activity
+     */
     private void fetchUserData() {
         DatabaseReference database = FirebaseDatabase.getInstance().getReference("users");
         DatabaseReference userRef = database.child(mAuth.getCurrentUser().getUid());

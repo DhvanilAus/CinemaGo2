@@ -33,6 +33,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Activity to show all the movies listing and after clicking on particular movie book now now one
+ * can book movie
+ */
+
 public class MoviesActivity extends AppCompatActivity implements BookNowInterface {
 
     private RecyclerView recyclerView;

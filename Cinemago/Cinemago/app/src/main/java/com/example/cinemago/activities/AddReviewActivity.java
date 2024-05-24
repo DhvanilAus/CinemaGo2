@@ -22,6 +22,10 @@ import com.example.cinemago.utils.SingletonClass;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+
+/**
+ * This activity is to save reviews under cinemas table against cinemaid
+ */
 public class AddReviewActivity extends AppCompatActivity {
 
     RatingBar ratingBar;
@@ -51,6 +55,9 @@ public class AddReviewActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * function to save data under reviews against cinemaid
+     */
 
     private void saveData() {
 

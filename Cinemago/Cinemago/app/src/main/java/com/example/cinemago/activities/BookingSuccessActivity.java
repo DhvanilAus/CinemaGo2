@@ -12,6 +12,10 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.cinemago.R;
 
+/**
+ * Booking success activity once booking is done this acitvity is shown and on click of close
+ * we are redirecting from BookingSuccessActivity to BookingsActivity
+ */
 public class BookingSuccessActivity extends AppCompatActivity {
 
     @Override

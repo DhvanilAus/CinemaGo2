@@ -23,6 +23,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * The is a add movie class in which we are adding movies against the reference of cinemas table and under cinemaid
+ */
 public class AddMovieActivity extends AppCompatActivity {
 
     EditText name, description, duration, language, ticketprice, day, time;
@@ -43,6 +47,10 @@ public class AddMovieActivity extends AppCompatActivity {
         time = findViewById(R.id.time);
         daytimetextview = findViewById(R.id.daytimetext);
 
+        /**
+         * On this button we are adding slots for movies if fields are not empty we are saving show time in a arraylist
+         * further we are saving arraying in movie table
+         */
         findViewById(R.id.adddaytime).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,6 +66,10 @@ public class AddMovieActivity extends AppCompatActivity {
                 }
             }
         });
+
+        /**
+         * on add button click we are checking field not empty and then running function saveData()
+         */
 
         findViewById(R.id.addbutton).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,7 +89,7 @@ public class AddMovieActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    saveData();
+                    saveData();  // function to save data in table under cinemaid and table name movies
                 }
             }
         });

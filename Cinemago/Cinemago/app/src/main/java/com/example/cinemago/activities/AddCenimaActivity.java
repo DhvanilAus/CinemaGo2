@@ -13,6 +13,10 @@ import com.example.cinemago.models.Cinema;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+/**
+ * This is add cinema activity in which we are adding cinema by taking a reference of table cimemas from the firebase
+ */
+
 public class AddCenimaActivity extends AppCompatActivity {
 
     EditText name, description, address, lat, lng, contact;
@@ -27,6 +31,11 @@ public class AddCenimaActivity extends AppCompatActivity {
         lat = findViewById(R.id.lat);
         lng = findViewById(R.id.lng);
         contact = findViewById(R.id.contact);
+
+        /**
+         * On the click of add button we are saving data in firebase cinema table
+         * first checking if all the fields has been filled
+         */
 
         findViewById(R.id.addbutton).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,19 +60,25 @@ public class AddCenimaActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Function to save data in a firebase under cinemas table
+     */
+
     private void saveData() {
 
         ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Saving Cinema Data...");
         progressDialog.show();
 
-        Cinema cinema = new Cinema();
-        cinema.setName(name.getText().toString());
+        Cinema cinema = new Cinema();  // making an object of cinema class which is under model package
+        cinema.setName(name.getText().toString());   //setting values inside it
         cinema.setDescription(description.getText().toString());
         cinema.setAddress(address.getText().toString());
         cinema.setLat(lat.getText().toString());
         cinema.setLng(lng.getText().toString());
         cinema.setContact(contact.getText().toString());
+
+        //reference created for cinemas table and added cinema type values in it
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("cinemas");
         String id = reference.push().getKey();

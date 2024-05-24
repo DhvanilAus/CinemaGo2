@@ -23,6 +23,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Seat activity to book seats once seat selected selected seats are placed in a arraylist and then saved in firebase
+ *
+ */
 public class SeatsActivity extends AppCompatActivity {
 
     ImageView seat1, seat2, seat3, seat4, seat5, seat6, seat7, seat8, seat9, seat10;
